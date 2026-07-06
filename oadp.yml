@@ -1,0 +1,53 @@
+apiVersion: oadp.openshift.io/v1alpha1
+kind: DataProtectionApplication
+metadata:
+  creationTimestamp: "2026-07-06T13:33:03Z"
+  generation: 1
+  name: oadp-dpa
+  namespace: openshift-adp
+  resourceVersion: "640054"
+  uid: 0a0736c5-a198-4125-9261-b1ae25be3b15
+spec:
+  backupLocations:
+  - velero:
+      config:
+        insecureSkipTLSVerify: "true"
+        profile: default
+        region: us-east-1
+        s3ForcePathStyle: "true"
+        s3Url: https://s3-openshift-storage.apps.ocp4.example.com
+      credential:
+        key: cloud
+        name: cloud-credentials
+      default: true
+      objectStorage:
+        bucket: backup-obc-bd16955c-97d0-430d-809c-1c253558e13b
+        prefix: velero
+      provider: aws
+  configuration:
+    nodeAgent:
+      enable: true
+      podConfig:
+        nodeSelector:
+          node-role.kubernetes.io/nodeAgent: ""
+      uploaderType: kopia
+    velero:
+      defaultPlugins:
+      - aws
+      - csi
+      - openshift
+      - kubevirt
+      resourceTimeout: 10m
+  snapshotLocations:
+  - velero:
+      config:
+        profile: default
+        region: us-east-1
+      provider: aws
+status:
+  conditions:
+  - lastTransitionTime: "2026-07-06T13:33:03Z"
+    message: Reconcile complete
+    reason: Complete
+    status: "True"
+    type: Reconciled

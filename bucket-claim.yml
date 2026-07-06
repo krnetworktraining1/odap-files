@@ -1,0 +1,24 @@
+apiVersion: objectbucket.io/v1alpha1
+kind: ObjectBucketClaim
+metadata:
+  creationTimestamp: "2026-07-06T13:32:48Z"
+  finalizers:
+  - objectbucket.io/finalizer
+  generation: 4
+  labels:
+    app: noobaa
+    bucket-provisioner: openshift-storage.noobaa.io-obc
+    noobaa-domain: openshift-storage.noobaa.io
+  name: backup-obc
+  namespace: backups
+  resourceVersion: "639688"
+  uid: 9485ddf0-abfb-4bed-b7fe-7b459b70e7de
+spec:
+  additionalConfig:
+    bucketclass: noobaa-default-bucket-class
+  bucketName: backup-obc-bd16955c-97d0-430d-809c-1c253558e13b
+  generateBucketName: backup-obc
+  objectBucketName: obc-backups-backup-obc
+  storageClassName: openshift-storage.noobaa.io
+status:
+  phase: Bound
